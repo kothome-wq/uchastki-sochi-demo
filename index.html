@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Участок под дом в Сочи – всё известно до поездки</title>
+<meta name="description" content="Земельные участки в Сочи: по каждому участку расположение, площадь, статус земли и коммуникации. Документы покажем до показа, подборку пришлём в мессенджер.">
+<meta property="og:image" content="assets/og.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath d=%27M5 9 L24 5 L28 22 L9 27 Z%27 fill=%27none%27 stroke=%27%23c8402a%27 stroke-width=%273.5%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="vibe.css">
+<style>
+  html, body { background: #e8eeeb; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  /* ---- тема: туман над морем, кипарис, межевая линия ------------------- */
+  .v-page {
+    --v-canvas: #e8eeeb; --v-surface: #f7f9f6;
+    --v-ink: #13302a; --v-ink-soft: #4d6862;
+    --v-accent: #c8402a; --v-accent-ink: #fff6f0;
+    --v-font-display: "Literata", "Georgia", serif;
+    --v-font-text: "Golos Text", "Segoe UI", system-ui, sans-serif;
+    --v-display-weight: 500;
+    --v-shadow-color: 19 48 42;
+    --v-e1: 0 1px 2px rgb(var(--v-shadow-color) / .1), 0 6px 18px rgb(var(--v-shadow-color) / .1);
+    --v-e2: 0 2px 6px rgb(var(--v-shadow-color) / .12), 0 22px 54px rgb(var(--v-shadow-color) / .2);
+    --v-radius: 6px;
+    --v-measure: 56ch;
+    --v-track-tight: -0.015em;
+    transition: none;
+  }
+  .v-page .v-display { text-wrap: balance; }
+  .v-page .v-btn { border-radius: var(--v-radius); font-size: var(--v-t-base); padding: .9em 1.4em; }
+  .v-page .v-lede { max-width: 38ch; }
+  .v-page button.v-btn { background: var(--v-accent); color: var(--v-accent-ink); }
+  .slot { font-style: normal; border-bottom: 1px dashed currentColor; opacity: .8; white-space: nowrap; }
+
+  /* ---- полоска с кнопкой: появляется после первого экрана --------------- */
+  .bar { position: fixed; z-index: 30; inset: 0 0 auto 0; display: flex; align-items: center; justify-content: space-between; gap: var(--v-4);
+    padding: .55rem var(--v-gutter); background: color-mix(in oklab, var(--v-canvas) 92%, transparent); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--v-hair); transform: translateY(-101%); transition: transform .3s var(--v-ease-out); }
+  .bar.is-on { transform: none; }
+  .bar__mark { font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-base); text-decoration: none; }
+  .v-page .bar .v-btn { font-size: var(--v-t-sm); padding: .65em 1.1em; box-shadow: none; }
+  @media (max-width: 600px) { .bar__mark { display: none; } .bar { justify-content: flex-end; } }
+
+  /* ---- первый экран: склон над морем и паспорт участка ------------------ */
+  .hero { background: #dfe8e6; }
+  .hero__photo img { width: 112%; height: 112%; left: -6%; top: -6%; object-fit: cover; object-position: 70% 60%; }
+  .hero__scrim { position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    background: linear-gradient(to right, rgb(232 238 235 / .9) 0%, rgb(232 238 235 / .62) 34%, rgb(232 238 235 / 0) 58%); }
+  .hero__head { position: absolute; z-index: 4; inset: 0 0 auto 0; display: flex; justify-content: space-between; align-items: baseline; gap: var(--v-4);
+    padding: var(--v-5) var(--v-gutter) 0; font-size: var(--v-t-sm); }
+  .hero__mark { font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); text-decoration: none; }
+  .hero__text { position: absolute; z-index: 4; left: var(--v-gutter); top: 0; bottom: 0; width: min(44rem, 56vw);
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-top: var(--v-7); }
+  .hero__text h1 { font-size: clamp(2.5rem, 1rem + 4.3vw, 5rem); line-height: 1; max-width: 15ch; }
+  .hero__text .v-lede { margin-top: var(--v-5); }
+  .hero__text .v-btn { margin-top: var(--v-6); }
+  .hero__text .hero__note { margin-top: var(--v-4); font-size: var(--v-t-sm); color: var(--v-ink-soft); max-width: 36ch; }
+
+  .passport { position: absolute; z-index: 5; right: calc(var(--v-gutter) + 2vw); top: clamp(5.5rem, 13vh, 8rem); width: min(23rem, 30vw);
+    background: var(--v-surface); border-radius: var(--v-radius); box-shadow: var(--v-e2), var(--v-edge); padding: var(--v-5) var(--v-5) var(--v-4);
+    transform: rotate(-1.6deg); }
+  .passport__title { display: flex; justify-content: space-between; align-items: baseline; gap: var(--v-3);
+    font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); padding-bottom: var(--v-3); border-bottom: 2px solid var(--v-ink); }
+  .passport__title > span { white-space: nowrap; font-family: var(--v-font-text); font-weight: 400; font-size: var(--v-t-sm); color: var(--v-ink-soft); }
+  .passport dl { margin: 0; }
+  .passport__row { display: flex; justify-content: space-between; align-items: baseline; gap: var(--v-4); padding: .62rem 0; border-bottom: 1px solid var(--v-hair);
+    font-size: var(--v-t-sm); opacity: .28; transition: opacity .35s var(--v-ease-out); }
+  .passport__row.is-on { opacity: 1; }
+  .passport__row dt { color: var(--v-ink-soft); position: relative; padding-left: 1.15rem; }
+  .passport__row dt::before { content: ""; position: absolute; left: 0; top: .42em; width: .5rem; height: .5rem; border-radius: 50%;
+    box-shadow: inset 0 0 0 1px var(--v-hair-strong); transition: background-color .35s var(--v-ease-out), box-shadow .35s var(--v-ease-out); }
+  .passport__row.is-on dt::before { background: var(--v-accent); box-shadow: inset 0 0 0 1px var(--v-accent); }
+  .passport__row dd { margin: 0; font-weight: 500; text-align: right; }
+  .passport .passport__foot { margin-top: var(--v-3); font-size: var(--v-t-xs); color: var(--v-ink-soft); line-height: 1.45; }
+
+  @media (max-width: 860px) {
+    .hero, .hero [data-v-stage] { background: var(--v-canvas); }
+    .hero__photo { bottom: auto; height: 55svh; }
+    .hero__photo img { object-position: 78% 60%; }
+    .hero__scrim { background: linear-gradient(to top, rgb(232 238 235 / 1) 0%, rgb(232 238 235 / 1) 46%, rgb(232 238 235 / 0) 53%),
+      linear-gradient(to bottom, rgb(232 238 235 / .8) 0%, rgb(232 238 235 / 0) 16%); }
+    .hero__head { padding-top: var(--v-4); }
+    .hero__head > span { display: none; }
+    .hero__text { width: auto; right: var(--v-gutter); justify-content: flex-end; padding: 0 0 var(--v-5); }
+    .hero__text h1 { font-size: clamp(1.9rem, 1rem + 4.6vw, 3rem); max-width: 16ch; }
+    .hero__text .v-lede { margin-top: var(--v-3); font-size: var(--v-t-base); }
+    .hero__text .v-btn { margin-top: var(--v-4); }
+    .hero__text .hero__note { margin-top: var(--v-3); }
+    .passport { right: var(--v-gutter); bottom: auto; top: 4.4rem; width: min(15.5rem, 64vw); padding: var(--v-3) var(--v-4) var(--v-2); transform: rotate(1.4deg); }
+    .passport__title { font-size: var(--v-t-base); padding-bottom: var(--v-2); }
+    .passport__title > span { display: none; }
+    .passport__row { padding: .34rem 0; font-size: .8rem; }
+    .passport__row:nth-child(n+5), .passport__foot { display: none; }
+    .passport__row:nth-child(4) { border-bottom: 0; }
+  }
+  @media (max-width: 860px) and (max-height: 700px) { .hero__note { display: none; } .passport { top: 3.6rem; } }
+  @media (min-width: 861px) and (max-height: 760px) {
+    .hero__text h1 { font-size: clamp(2.2rem, 1rem + 3.4vw, 3.8rem); }
+    .passport { top: 4.5rem; padding: var(--v-4) var(--v-5) var(--v-3); }
+    .passport__row { padding: .45rem 0; }
+  }
+
+  /* ---- что на самом деле за словами объявления -------------------------- */
+  .blind__grid { display: grid; grid-template-columns: 5fr 7fr; gap: var(--v-8); align-items: start; }
+  .blind__grid h2 { max-width: 12ch; }
+  .blind__grid .v-body { margin-top: var(--v-5); color: var(--v-ink-soft); }
+  .blind__list li { display: grid; grid-template-columns: 12rem 1fr; gap: var(--v-5); padding: var(--v-4) 0; border-top: 1px solid var(--v-hair-strong); align-items: baseline; }
+  .blind__list li:last-child { border-bottom: 1px solid var(--v-hair-strong); }
+  .blind__list q { quotes: "«" "»"; font-family: var(--v-font-display); font-weight: 500; font-size: var(--v-t-lg); line-height: 1.25; }
+  .blind__list span { color: var(--v-ink-soft); }
+  .blind .blind__out { margin-top: var(--v-5); font-weight: 500; max-width: 44ch; }
+  @media (max-width: 860px) {
+    .blind__grid { grid-template-columns: 1fr; gap: var(--v-6); }
+    .blind__grid h2 { max-width: none; }
+    .blind__list li { grid-template-columns: 1fr; gap: var(--v-1); }
+  }
+
+  /* ---- план сверху: границы проявляются по прокрутке -------------------- */
+  .plan { background: #2c4a36; }
+  .plan__svg { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; pointer-events: none; }
+  .plan__plot { fill: #fff6f0; fill-opacity: clamp(0, (var(--v-p, 0) - .36) * 2, .14); stroke: #fff6f0; stroke-width: 3; stroke-linejoin: round; vector-effect: non-scaling-stroke;
+    stroke-dasharray: 1; stroke-dashoffset: calc(1 - clamp(0, (var(--v-p, 0) - var(--a)) * 6, 1)); }
+  .plan__plot--pick { stroke: var(--v-accent); fill: var(--v-accent); fill-opacity: clamp(0, (var(--v-p, 0) - .36) * 3, .3); stroke-width: 4; }
+  .plan__road { fill: none; stroke: var(--v-accent); stroke-width: 5; stroke-linecap: round; vector-effect: non-scaling-stroke;
+    stroke-dasharray: 1; stroke-dashoffset: calc(1 - clamp(0, (var(--v-p, 0) - .64) * 5, 1)); }
+  .plan__num { font-family: "Golos Text", sans-serif; font-weight: 600; font-size: 30px; fill: #fff6f0; opacity: clamp(0, (var(--v-p, 0) - var(--a) - .1) * 8, 1); paint-order: stroke; stroke: rgb(19 48 42 / .55); stroke-width: 6px; }
+  .plan__card { position: absolute; z-index: 4; left: var(--v-gutter); bottom: clamp(2rem, 10vh, 6rem); width: min(27rem, 40vw); }
+  .plan__cue { position: absolute; left: 0; bottom: 0; width: 100%; background: var(--v-surface); border-radius: var(--v-radius); box-shadow: var(--v-e2); padding: var(--v-5) var(--v-5) var(--v-5); }
+  .plan__cue h3 { font-size: var(--v-t-xl); }
+  .plan__cue p { margin-top: var(--v-3); color: var(--v-ink-soft); }
+  .plan__steps { display: flex; gap: .4rem; margin-bottom: var(--v-4); }
+  .plan__steps i { flex: 1; height: 3px; border-radius: 2px; background: var(--v-hair-strong); }
+  .plan__steps i.is-on { background: var(--v-accent); }
+  .plan__title { position: absolute; z-index: 4; left: var(--v-gutter); top: clamp(4.5rem, 12vh, 7rem); max-width: 16ch; color: #fff6f0; text-shadow: 0 1px 24px rgb(19 48 42 / .55); }
+  .plan__shade { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to bottom, rgb(19 48 42 / .5) 0%, rgb(19 48 42 / 0) 36%); }
+  @media (max-width: 860px) {
+    .plan__card { right: var(--v-gutter); width: auto; bottom: var(--v-5); }
+    .plan__cue { padding: var(--v-4); }
+    .plan__title { top: 4.2rem; }
+    .plan__num { font-size: 44px; }
+  }
+
+  /* ---- участки в продаже: ведомость ------------------------------------- */
+  .lots__head { display: flex; justify-content: space-between; align-items: end; gap: var(--v-6); flex-wrap: wrap; }
+  .lots__head p { color: var(--v-ink-soft); max-width: 40ch; }
+  .lots__table { margin-top: var(--v-7); border-top: 2px solid var(--v-ink); }
+  .lots__row { display: grid; grid-template-columns: 1.1fr .8fr 1.5fr 1.5fr 1fr; gap: var(--v-5); padding: var(--v-4) 0; border-bottom: 1px solid var(--v-hair-strong); align-items: baseline; }
+  .lots__row--head { font-size: var(--v-t-sm); color: var(--v-ink-soft); padding: var(--v-3) 0; }
+  .lots__row b { font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); }
+  .lots__row > :last-child { text-align: right; font-weight: 500; }
+  .lots__row [data-l]::before { content: none; }
+  .lots__after { margin-top: var(--v-6); display: flex; align-items: center; gap: var(--v-5); flex-wrap: wrap; }
+  .lots__after p { color: var(--v-ink-soft); max-width: 44ch; font-size: var(--v-t-sm); }
+  @media (max-width: 860px) {
+    .lots__row--head { display: none; }
+    .lots__row { grid-template-columns: 1fr 1fr; gap: var(--v-2) var(--v-4); padding: var(--v-5) 0; }
+    .lots__row b { grid-column: 1 / -1; }
+    .lots__row [data-l] { display: flex; flex-direction: column; font-size: var(--v-t-sm); }
+    .lots__row [data-l]::before { content: attr(data-l); color: var(--v-ink-soft); font-size: var(--v-t-xs); font-weight: 400; }
+    .lots__row > :last-child { text-align: left; }
+  }
+
+  /* ---- документы до показа: тёмный разворот ----------------------------- */
+  .docs { --v-ink: #eef3ef; --v-ink-soft: #a9bdb5; --v-surface: #1c3d36;
+    --v-hair: color-mix(in oklab, #eef3ef 16%, transparent); --v-hair-strong: color-mix(in oklab, #eef3ef 30%, transparent);
+    background: #13302a; color: var(--v-ink); }
+  .docs__grid { display: grid; grid-template-columns: 5fr 7fr; gap: var(--v-8); align-items: center; }
+  .fig { position: relative; overflow: hidden; border-radius: var(--v-radius); background: var(--v-surface); }
+  .fig > div { position: absolute; left: 0; right: 0; top: -36px; bottom: -36px; will-change: transform; }
+  .fig img { width: 100%; height: 100%; object-fit: cover; }
+  .docs .fig { aspect-ratio: 3 / 4; }
+  .docs .docs__list { margin-top: var(--v-6); }
+  .docs__list li { padding: var(--v-4) 0; border-top: 1px solid var(--v-hair-strong); display: grid; grid-template-columns: 13rem 1fr; gap: var(--v-5); align-items: baseline; }
+  .docs__list li:last-child { border-bottom: 1px solid var(--v-hair-strong); }
+  .docs__list b { font-weight: 600; }
+  .docs__list span { color: var(--v-ink-soft); }
+  .docs .docs__out { margin-top: var(--v-5); max-width: 46ch; }
+  @media (max-width: 860px) {
+    .docs__grid { grid-template-columns: 1fr; gap: var(--v-6); }
+    .docs .fig { aspect-ratio: 4 / 3; }
+    .docs__list li { grid-template-columns: 1fr; gap: var(--v-1); }
+  }
+
+  /* ---- как проходит покупка: пять шагов --------------------------------- */
+  .steps__grid { display: grid; grid-template-columns: 7fr 4fr; gap: var(--v-8); align-items: start; }
+  .steps .steps__list { margin-top: var(--v-6); counter-reset: s; }
+  .steps__list li { counter-increment: s; display: grid; grid-template-columns: 3.2rem 9rem 1fr; gap: var(--v-4); padding: var(--v-4) 0; border-top: 1px solid var(--v-hair-strong); align-items: baseline; }
+  .steps__list li:last-child { border-bottom: 1px solid var(--v-hair-strong); }
+  .steps__list li::before { content: counter(s); font-family: var(--v-font-display); font-weight: 500; font-size: var(--v-t-xl); line-height: 1; color: var(--v-accent); }
+  .steps__list b { font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); }
+  .steps__list span { color: var(--v-ink-soft); }
+  .steps .fig { aspect-ratio: 3 / 4; position: sticky; top: 5rem; }
+  @media (max-width: 860px) {
+    .steps__grid { grid-template-columns: 1fr; gap: var(--v-6); }
+    .steps__list li { grid-template-columns: 2.2rem 1fr; }
+    .steps__list li span { grid-column: 2; }
+    .steps .fig { position: relative; top: 0; aspect-ratio: 4 / 3; order: -1; }
+  }
+
+  /* ---- показ участка: фото держится, две реплики ------------------------ */
+  .show { background: #9cb6c4; }
+  .show__photo img { width: 110%; height: 112%; left: -5%; top: -6%; object-fit: cover; object-position: 62% 50%; }
+  .show__card { position: absolute; z-index: 4; left: var(--v-gutter); top: clamp(4.5rem, 14vh, 8rem); width: min(26rem, 36vw); }
+  .show__card .plan__cue { bottom: auto; top: 0; }
+  @media (max-width: 860px) {
+    .show__photo img { object-position: 72% 50%; }
+    .show__card { top: auto; bottom: var(--v-5); right: var(--v-gutter); width: auto; }
+    .show__card .plan__cue { top: auto; bottom: 0; padding: var(--v-4); }
+  }
+
+  /* ---- отзывы ----------------------------------------------------------- */
+  .reviews__head { display: flex; flex-wrap: wrap; gap: var(--v-6); align-items: end; justify-content: space-between; margin-bottom: var(--v-7); }
+  .reviews__rating { display: flex; flex-wrap: wrap; align-items: center; gap: var(--v-3); font-size: var(--v-t-sm); }
+  .reviews__num { font-family: var(--v-font-display); font-size: var(--v-t-2xl); line-height: 1; }
+  .reviews__stars { --size: 1.1rem; display: inline-block; width: calc(var(--size) * 5); height: var(--size);
+    background: linear-gradient(90deg, var(--v-accent) calc(var(--r, 0) / 5 * 100%), var(--v-hair-strong) 0);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z'/%3E%3C/svg%3E") 0 0 / var(--size) var(--size) repeat-x;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z'/%3E%3C/svg%3E") 0 0 / var(--size) var(--size) repeat-x; }
+  .reviews__stars--sm { --size: .8rem; vertical-align: middle; margin-left: .4em; }
+  .reviews__list { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: var(--v-6); align-items: start; }
+  .reviews__item { padding-top: var(--v-5); border-top: 1px solid var(--v-hair-strong); }
+  .reviews-sec .reviews__item--big .reviews__text { font-family: var(--v-font-display); font-size: var(--v-t-lg); line-height: 1.4; }
+  .reviews-sec .reviews__meta { margin-top: var(--v-4); font-size: var(--v-t-sm); color: var(--v-ink-soft); }
+  .reviews__meta b { color: var(--v-ink); font-weight: 600; }
+  @media (max-width: 860px) { .reviews__list { grid-template-columns: 1fr; } }
+
+  /* ---- вид с участка: шторка-переход ------------------------------------ */
+  .view { padding: 0; }
+  .view figure { height: min(78vh, 46vw); min-height: 16rem; overflow: hidden; }
+  .view img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 80%; }
+
+  /* ---- заявка ----------------------------------------------------------- */
+  .lead__grid { display: grid; grid-template-columns: 7fr 5fr; gap: var(--v-8); align-items: start; margin-top: var(--v-7); }
+  .lead h2 { max-width: 15ch; }
+  .lead .lead__sub { margin-top: var(--v-4); color: var(--v-ink-soft); max-width: 46ch; }
+  .form { background: var(--v-surface); border-radius: var(--v-radius); box-shadow: var(--v-e1); padding: clamp(1.25rem, 3vw, 2.25rem); display: grid; gap: var(--v-5); }
+  .form label, .form legend { display: block; font-size: var(--v-t-sm); font-weight: 500; margin-bottom: var(--v-2); padding: 0; }
+  .form input[type="text"], .form input[type="tel"] { width: 100%; font: inherit; color: var(--v-ink); background: var(--v-canvas); border: 1px solid var(--v-hair-strong);
+    border-radius: var(--v-radius); padding: .8em .95em; }
+  .form input::placeholder { color: var(--v-ink-soft); opacity: .75; }
+  .form input:focus-visible { outline: 2px solid var(--v-accent); outline-offset: 1px; }
+  .form fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+  .form__pick { display: flex; flex-wrap: wrap; gap: var(--v-2); }
+  .form__pick label { margin: 0; font-weight: 400; cursor: pointer; }
+  .form__pick input { position: absolute; opacity: 0; pointer-events: none; }
+  .form__pick span { display: block; padding: .6em 1em; border-radius: var(--v-radius); box-shadow: inset 0 0 0 1px var(--v-hair-strong); font-size: var(--v-t-sm); }
+  .form__pick input:checked + span { background: var(--v-ink); color: var(--v-surface); box-shadow: none; }
+  .form__pick input:focus-visible + span { outline: 2px solid var(--v-accent); outline-offset: 2px; }
+  .form__agree { display: flex; gap: var(--v-3); align-items: flex-start; font-size: var(--v-t-sm); color: var(--v-ink-soft); font-weight: 400; margin: 0; }
+  .form__agree input { margin-top: .3em; width: 1.05rem; height: 1.05rem; accent-color: var(--v-accent); flex: none; }
+  .form .v-btn { justify-content: center; width: 100%; }
+  .form__state { font-size: var(--v-t-sm); padding: var(--v-3) var(--v-4); border-radius: var(--v-radius); background: var(--v-canvas); border: 1px solid var(--v-hair-strong); }
+  .form__state[hidden] { display: none; }
+  .agent { display: grid; gap: var(--v-5); }
+  .agent__who { display: flex; gap: var(--v-4); align-items: center; }
+  .agent__photo { flex: none; width: 5.5rem; height: 5.5rem; border-radius: 50%; background: var(--v-surface); box-shadow: inset 0 0 0 1px var(--v-hair-strong);
+    display: grid; place-items: center; font-size: var(--v-t-xs); color: var(--v-ink-soft); }
+  .agent__who b { display: block; font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); line-height: 1.2; }
+  .agent__who span { color: var(--v-ink-soft); font-size: var(--v-t-sm); }
+  .agent__lines li { display: flex; justify-content: space-between; gap: var(--v-4); padding: var(--v-3) 0; border-top: 1px solid var(--v-hair-strong); }
+  .agent__lines li:last-child { border-bottom: 1px solid var(--v-hair-strong); }
+  .agent__lines span { color: var(--v-ink-soft); }
+  .agent__lines a { font-weight: 500; }
+  .foot { margin-top: var(--v-8); padding-top: var(--v-4); border-top: 1px solid var(--v-hair-strong); display: flex; justify-content: space-between; gap: var(--v-4) var(--v-6); flex-wrap: wrap;
+    font-size: var(--v-t-sm); color: var(--v-ink-soft); }
+  @media (max-width: 860px) { .lead__grid { grid-template-columns: 1fr; gap: var(--v-7); margin-top: var(--v-6); } }
+</style>
+</head>
+<body>
+<div class="v-page">
+
+  <div class="bar" id="bar">
+    <a class="bar__mark" href="#top"><span class="slot">{{имя-риелтора}}</span>, риелтор</a>
+    <a class="v-btn" href="#zayavka">Получить подборку участков</a>
+  </div>
+
+  <main>
+
+    <!-- 0. Первый экран: склон над морем, паспорт участка заполняется по прокрутке -->
+    <section class="hero" id="top" data-v-act="pin" data-v-span="2.4">
+      <div data-v-stage>
+        <div class="v-layer hero__photo" data-v-parallax="-0.5"><img src="assets/hero.webp" alt="Зелёный склон с кипарисами над морем" width="1920" height="1067" fetchpriority="high"></div>
+        <div class="hero__scrim"></div>
+        <div class="hero__head">
+          <a class="hero__mark" href="#top"><span class="slot">{{имя-риелтора}}</span>, риелтор</a>
+          <span><a href="tel:{{телефон}}"><span class="slot">{{телефон}}</span></a></span>
+        </div>
+        <div class="hero__text" data-v-cue="0 1 0 0">
+          <h1 class="v-display">Участок под&nbsp;дом в&nbsp;Сочи&nbsp;– всё известно до&nbsp;поездки</h1>
+          <p class="v-lede">Расположение, площадь, статус земли и подъезд видны заранее. Документы пришлём до показа, подберём под вашу задачу и бюджет.</p>
+          <a class="v-btn" href="#zayavka">Получить подборку участков</a>
+          <p class="hero__note">Пришлём карточки в мессенджер. Показ – на месте или по видеосвязи, если вы в другом городе.</p>
+        </div>
+        <aside class="passport" id="passport" aria-label="Образец карточки участка">
+          <div class="passport__title">Паспорт участка <span>№ <span class="slot">{{номер}}</span></span></div>
+          <dl>
+            <div class="passport__row is-on"><dt>Площадь</dt><dd><span class="slot">{{площадь}}</span> сот.</dd></div>
+            <div class="passport__row is-on"><dt>Статус земли</dt><dd><span class="slot">{{статус}}</span></dd></div>
+            <div class="passport__row"><dt>Уклон</dt><dd><span class="slot">{{уклон}}</span></dd></div>
+            <div class="passport__row"><dt>Подъезд</dt><dd><span class="slot">{{подъезд}}</span></dd></div>
+            <div class="passport__row"><dt>Свет, вода, газ</dt><dd><span class="slot">{{коммуникации}}</span></dd></div>
+            <div class="passport__row"><dt>Цена</dt><dd>уточнить</dd></div>
+          </dl>
+          <p class="passport__foot">Такую карточку получаете по каждому участку из подборки.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 1. Покупка вслепую -->
+    <section class="v-section v-section--tight blind" data-v-act="flow">
+      <div class="v-wrap blind__grid">
+        <div data-v-in>
+          <h2 class="v-display v-display--md">Участок по объявлению – покупка вслепую</h2>
+          <p class="v-body">За одной строкой в объявлении может стоять что угодно. Особенно если вы выбираете землю из другого города и не можете приехать на каждый показ.</p>
+        </div>
+        <div>
+          <ul class="blind__list" data-v-in data-v-stagger="60">
+            <li><q>Ровный участок</q><span>Склон, на котором дом не поставить без подпорных стен.</span></li>
+            <li><q>Подъезд есть</q><span>Грунтовка, которую размывает после каждого дождя.</span></li>
+            <li><q>Документы в порядке</q><span>Статус земли, при котором жилой дом построить нельзя.</span></li>
+            <li><q>Цена по запросу</q><span>Сумма, которую называют только на показе.</span></li>
+          </ul>
+          <p class="blind__out">Поэтому по каждому участку мы заранее показываем то, что обычно узнают уже на месте.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. План сверху: границы, статус, подъезд -->
+    <section class="plan" id="plan" data-v-act="pin" data-v-span="3">
+      <div data-v-stage>
+        <div class="v-fill"><img src="assets/plan.webp" alt="Вид на участки сверху: луг и подъездная дорога" width="1920" height="1067" loading="lazy" decoding="async"></div>
+        <div class="plan__shade"></div>
+        <svg class="plan__svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <path class="plan__plot" style="--a:.04" pathLength="1" d="M 760 180 L 1215 180 L 1055 330 L 700 330 Z"/>
+          <path class="plan__plot" style="--a:.16" pathLength="1" d="M 1000 445 L 1135 335 L 1380 335 L 1380 610 L 880 610 Z"/>
+          <path class="plan__plot" style="--a:.22" pathLength="1" d="M 878 625 L 1300 625 L 1300 850 L 822 850 Z"/>
+          <path class="plan__plot plan__plot--pick" style="--a:.1" pathLength="1" d="M 700 330 L 1055 330 L 925 440 L 840 570 L 640 570 Z"/>
+          <path class="plan__road" pathLength="1" d="M 780 900 C 795 740, 840 580, 930 440 C 1000 350, 1120 270, 1180 220 C 1230 180, 1260 150, 1280 130"/>
+          <text class="plan__num" style="--a:.04" x="930" y="270">1</text>
+          <text class="plan__num" style="--a:.1" x="835" y="465">2</text>
+          <text class="plan__num" style="--a:.16" x="965" y="560">3</text>
+          <text class="plan__num" style="--a:.22" x="930" y="755">4</text>
+        </svg>
+        <h2 class="v-display v-display--md plan__title">Что видно по участку до поездки</h2>
+        <div class="plan__card">
+          <div class="plan__cue" data-v-cue="0 0.36 0 0.05">
+            <div class="plan__steps"><i class="is-on"></i><i></i><i></i></div>
+            <h3 class="v-display">Где он находится</h3>
+            <p>Точка на карте, границы по кадастру и расстояния: до моря, до города, до магазина и школы.</p>
+          </div>
+          <div class="plan__cue" data-v-cue="0.32 0.68 0.05 0.05">
+            <div class="plan__steps"><i class="is-on"></i><i class="is-on"></i><i></i></div>
+            <h3 class="v-display">Что с землёй</h3>
+            <p>Категория и разрешённое использование: можно ли строить жилой дом и прописаться. Выписку из ЕГРН пришлём до показа.</p>
+          </div>
+          <div class="plan__cue" data-v-cue="0.64 1 0.05 0">
+            <div class="plan__steps"><i class="is-on"></i><i class="is-on"></i><i class="is-on"></i></div>
+            <h3 class="v-display">Как подъехать и подключиться</h3>
+            <p>Дорога до границы участка, уклон, свет, вода и газ: что уже подведено, а что рядом.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Участки в продаже -->
+    <section class="v-section v-section--tight lots" id="uchastki" data-v-act="flow">
+      <div class="v-wrap">
+        <div class="lots__head" data-v-in>
+          <h2 class="v-display v-display--md">Участки в продаже</h2>
+          <p>Главное по каждому участку – в одной строке. Полную карточку с документами и фото пришлём в подборке.</p>
+        </div>
+        <div class="lots__table" data-v-in data-v-stagger="50">
+          <div class="lots__row lots__row--head"><span>Участок</span><span>Площадь</span><span>Статус земли</span><span>Свет, вода, газ</span><span>Цена</span></div>
+          <div class="lots__row"><b>№ 1</b><span data-l="Площадь"><span class="slot">{{площадь}}</span> сот.</span><span data-l="Статус земли"><span class="slot">{{статус}}</span></span><span data-l="Свет, вода, газ"><span class="slot">{{коммуникации}}</span></span><span data-l="Цена">уточнить</span></div>
+          <div class="lots__row"><b>№ 2</b><span data-l="Площадь"><span class="slot">{{площадь}}</span> сот.</span><span data-l="Статус земли"><span class="slot">{{статус}}</span></span><span data-l="Свет, вода, газ"><span class="slot">{{коммуникации}}</span></span><span data-l="Цена">уточнить</span></div>
+          <div class="lots__row"><b>№ 3</b><span data-l="Площадь"><span class="slot">{{площадь}}</span> сот.</span><span data-l="Статус земли"><span class="slot">{{статус}}</span></span><span data-l="Свет, вода, газ"><span class="slot">{{коммуникации}}</span></span><span data-l="Цена">уточнить</span></div>
+          <div class="lots__row"><b>№ 4</b><span data-l="Площадь"><span class="slot">{{площадь}}</span> сот.</span><span data-l="Статус земли"><span class="slot">{{статус}}</span></span><span data-l="Свет, вода, газ"><span class="slot">{{коммуникации}}</span></span><span data-l="Цена">уточнить</span></div>
+        </div>
+        <div class="lots__after" data-v-in>
+          <a class="v-btn" href="#zayavka">Получить подборку участков</a>
+          <p>Напишите, для чего участок и на какой бюджет – отберём подходящие и пришлём карточки.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Документы до показа -->
+    <section class="v-section docs" id="dokumenty" data-v-act="flow">
+      <div class="v-wrap docs__grid">
+        <figure data-v-reveal="left" data-v-reveal-at="0.1 0.42">
+          <div class="fig"><div data-v-parallax="0.4"><img src="assets/survey.webp" alt="Геодезический штатив на участке" width="1600" height="1067" style="object-position:24% 50%" loading="lazy" decoding="async"></div></div>
+        </figure>
+        <div>
+          <div data-v-in>
+            <h2 class="v-display v-display--md">Документы – до показа, а не после задатка</h2>
+          </div>
+          <ul class="docs__list" data-v-in data-v-stagger="60">
+            <li><b>Выписка из ЕГРН</b><span>Кто собственник, есть ли обременения и аресты.</span></li>
+            <li><b>Статус земли</b><span>Категория и разрешённое использование: что на участке можно строить.</span></li>
+            <li><b>Границы</b><span>Межевание и координаты: участок там, где его показывают.</span></li>
+            <li><b>Ограничения</b><span>Охранные и другие зоны с особыми условиями, если они есть.</span></li>
+          </ul>
+          <p class="docs__out">Вопросы по документам можно задать до поездки – ответим письменно.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Как проходит покупка -->
+    <section class="v-section steps" id="kak" data-v-act="flow">
+      <div class="v-wrap steps__grid">
+        <div>
+          <div data-v-in>
+            <h2 class="v-display v-display--md">Как проходит покупка</h2>
+          </div>
+          <ol class="steps__list" data-v-in data-v-stagger="60" style="padding:0;list-style:none">
+            <li><b>Заявка</b><span>Оставляете телефон и пишете, для чего участок и на какой бюджет.</span></li>
+            <li><b>Подборка</b><span>Присылаем в мессенджер карточки подходящих участков с документами.</span></li>
+            <li><b>Показ</b><span>Смотрите участок, подъезд и соседей – на месте или по видеосвязи.</span></li>
+            <li><b>Договор</b><span>Цена, сроки и условия фиксируются письменно.</span></li>
+            <li><b>Сделка</b><span>Регистрация перехода права – и участок ваш.</span></li>
+          </ol>
+        </div>
+        <div class="fig"><div data-v-parallax="0.4"><img src="assets/road.webp" alt="Дорога между кипарисами" width="1200" height="1800" loading="lazy" decoding="async"></div></div>
+      </div>
+    </section>
+
+    <!-- 6. Показ участка: на месте или по видеосвязи -->
+    <section class="show" id="pokaz" data-v-act="pin" data-v-span="2.2">
+      <div data-v-stage>
+        <div class="v-layer show__photo" data-v-parallax="-0.4"><img src="assets/show.webp" alt="Показ участка на склоне с видом на море" width="1920" height="1080" loading="lazy" decoding="async"></div>
+        <div class="show__card">
+          <div class="plan__cue" data-v-cue="0 0.55 0 0.05">
+            <div class="plan__steps"><i class="is-on"></i><i></i></div>
+            <h3 class="v-display">Показ на месте</h3>
+            <p>Встречаем у участка, проходим по границам, смотрим подъезд, соседей и вид. На все вопросы отвечаем там же.</p>
+          </div>
+          <div class="plan__cue" data-v-cue="0.5 1 0.05 0">
+            <div class="plan__steps"><i class="is-on"></i><i class="is-on"></i></div>
+            <h3 class="v-display">Показ по видеосвязи</h3>
+            <p>Если вы в другом городе – проходим участок с камерой: углы, дорога, уклон, вид на море. Приезжаете уже к сделке.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Отзывы: только настоящие, до заполнения – слоты -->
+    <section class="v-section reviews-sec" id="otzyvy" data-v-act="flow" aria-label="Отзывы покупателей">
+      <div class="v-wrap">
+        <div class="reviews__head" data-v-in data-v-stagger="60">
+          <h2 class="v-display v-display--md">Что пишут покупатели</h2>
+          <div class="reviews__rating">
+            <span class="reviews__num v-nums"><span class="slot">{{рейтинг}}</span></span>
+            <span class="reviews__stars" data-r="{{рейтинг}}" aria-hidden="true"></span>
+            <span class="v-soft"><span class="slot">{{отзывов}}</span> отзывов, <span class="slot">{{площадка-отзывов}}</span></span>
+            <a href="{{ссылка-отзывы}}" rel="noopener">Читать все отзывы</a>
+          </div>
+        </div>
+        <ul class="reviews__list" data-v-in data-v-stagger="90">
+          <li class="reviews__item reviews__item--big">
+            <p class="reviews__text">«<span class="slot">{{отзыв 1}}</span>»</p>
+            <p class="reviews__meta"><b><span class="slot">{{имя 1}}</span></b>, <span class="slot">{{дата 1}}</span> <span class="reviews__stars reviews__stars--sm" data-r="{{оценка 1}}"></span></p>
+          </li>
+          <li class="reviews__item">
+            <p class="reviews__text">«<span class="slot">{{отзыв 2}}</span>»</p>
+            <p class="reviews__meta"><b><span class="slot">{{имя 2}}</span></b>, <span class="slot">{{дата 2}}</span> <span class="reviews__stars reviews__stars--sm" data-r="{{оценка 2}}"></span></p>
+          </li>
+          <li class="reviews__item">
+            <p class="reviews__text">«<span class="slot">{{отзыв 3}}</span>»</p>
+            <p class="reviews__meta"><b><span class="slot">{{имя 3}}</span></b>, <span class="slot">{{дата 3}}</span> <span class="reviews__stars reviews__stars--sm" data-r="{{оценка 3}}"></span></p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8. Вид с участка -->
+    <section class="view" data-v-act="flow">
+      <figure data-v-reveal="up" data-v-reveal-at="0.05 0.4"><img src="assets/view.webp" alt="Зелёные холмы над морем" width="1920" height="1280" loading="lazy" decoding="async"></figure>
+    </section>
+
+    <!-- 7. Заявка -->
+    <section class="v-section lead" id="zayavka" data-v-act="flow">
+      <div class="v-wrap">
+        <div data-v-in>
+          <h2 class="v-display v-display--lg">Подберём участок под вашу задачу</h2>
+          <p class="lead__sub">Оставьте телефон – пришлём карточки подходящих участков с документами.</p>
+        </div>
+        <div class="lead__grid">
+          <form class="form" id="form" novalidate data-v-in data-v-in-self>
+            <div>
+              <label for="f-name">Как к вам обращаться</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Имя">
+            </div>
+            <div>
+              <label for="f-phone">Телефон</label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7 900 000-00-00" required aria-describedby="f-state">
+            </div>
+            <fieldset>
+              <legend>Куда прислать подборку</legend>
+              <div class="form__pick">
+                <label><input type="radio" name="via" value="telegram" checked><span>Телеграм</span></label>
+                <label><input type="radio" name="via" value="whatsapp"><span>Ватсап</span></label>
+                <label><input type="radio" name="via" value="call"><span>Позвоните мне</span></label>
+              </div>
+            </fieldset>
+            <label class="form__agree"><input type="checkbox" name="agree" required><span>Согласен на обработку персональных данных по <a href="{{политика}}">политике</a>.</span></label>
+            <button class="v-btn" type="submit">Получить подборку участков</button>
+            <p class="form__state" id="f-state" role="status" hidden></p>
+          </form>
+          <div class="agent" data-v-in data-v-stagger="60">
+            <div class="agent__who">
+              <div class="agent__photo">фото</div>
+              <div><b><span class="slot">{{имя-риелтора}}</span></b><span>Риелтор, земельные участки в Сочи</span></div>
+            </div>
+            <ul class="agent__lines">
+              <li><span>Телефон</span><a href="tel:{{телефон}}"><span class="slot">{{телефон}}</span></a></li>
+              <li><span>На связи</span><b style="font-weight:500"><span class="slot">{{часы}}</span></b></li>
+              <li><span>Офис</span><b style="font-weight:500">Сочи, <span class="slot">{{адрес}}</span></b></li>
+            </ul>
+          </div>
+        </div>
+        <footer class="foot">
+          <span>Участки в Сочи, <span class="slot">{{компания}}</span></span>
+          <span><a href="{{политика}}">Политика обработки персональных данных</a></span>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="vibe.js"></script>
+<script>
+  Vibe.mount(document.querySelector('.v-page'));
+
+  // Первый экран: строки паспорта участка заполняются по прокрутке (ведётся от --v-p акта).
+  (function () {
+    var act = document.getElementById('top');
+    var rows = document.querySelectorAll('#passport .passport__row');
+    var live = false, last = -1;
+    function tick() {
+      var p = parseFloat(getComputedStyle(act).getPropertyValue('--v-p')) || 0;
+      var k = 2 + Math.floor(Math.min(p / 0.6, 1) * (rows.length - 2) + 0.001);
+      if (k !== last) { last = k; for (var i = 0; i < rows.length; i++) rows[i].classList.toggle('is-on', i < k); }
+      if (live) requestAnimationFrame(tick);
+    }
+    new IntersectionObserver(function (es) { live = es[0].isIntersecting; if (live) tick(); }).observe(act);
+    new IntersectionObserver(function (es) { document.getElementById('bar').classList.toggle('is-on', !es[0].isIntersecting); }).observe(act);
+    tick();
+  })();
+
+  // Звёзды отзывов: заливка по числу из data-r («4,8» или «4.8»). Пока слот не заполнен, звёзды пустые.
+  Array.prototype.forEach.call(document.querySelectorAll('.reviews__stars[data-r]'), function (el) {
+    var n = parseFloat(String(el.getAttribute('data-r')).replace(',', '.'));
+    el.style.setProperty('--r', isNaN(n) ? 0 : Math.min(Math.max(n, 0), 5));
+  });
+
+  // Форма: в демо заявка никуда не уходит. В рабочей версии подключается приём заявок.
+  (function () {
+    var form = document.getElementById('form'), state = document.getElementById('f-state');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var phone = form.phone.value.replace(/\D/g, '');
+      state.hidden = false;
+      if (phone.length < 10) { state.textContent = 'Укажите телефон полностью, с кодом: например, +7 900 000-00-00.'; form.phone.focus(); return; }
+      if (!form.agree.checked) { state.textContent = 'Отметьте согласие на обработку данных – без него заявку принять нельзя.'; form.agree.focus(); return; }
+      state.textContent = 'Это демо-версия страницы: заявка никуда не отправлена. В рабочей версии она придёт риелтору.';
+    });
+  })();
+</script>
+</body>
+</html>
